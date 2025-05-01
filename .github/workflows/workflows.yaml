@@ -13,4 +13,8 @@ jobs:
   build:
     runs-on: ubuntu:latest
     container: python:3.9-slim
-    
+    steps:
+      uses: actions/checkout@v4
+      name: checkout the code
+      run: |
+        docker build -t myimage:v1 .

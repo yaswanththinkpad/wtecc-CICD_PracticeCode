@@ -9,12 +9,14 @@ on:
       - "main"
 
 jobs:
-  name: CI process
   build:
     runs-on: ubuntu:latest
-    container: python:3.9-slim
+    container: 
+      image: python:3.9-slim
     steps:
+    - name: checkout 
       uses: actions/checkout@v4
-      name: checkout the code
+    - name: checkout the code
       run: |
+        apt-get update && apt-get install docker.io -y
         docker build -t myimage:v1 .
